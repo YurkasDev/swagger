@@ -108,13 +108,15 @@ definitions:
     title: "Статусы заказа"
     type: "string"
     description: |
-      * `accepted` --- Заказ принят в обработку
+      * `accepted` --- Принят но ещё не обработан
+      * `paymentExpected` --- Ожидается оплата
       * `inprogress` --- Заказ находиться в работе
-      * `ready` --- Заказ готов к отгрузке
-      * `closed` --- Заказ закрыт
-      * `completed` --- Заказ выполнен
+      * `ready` --- Готов к отгрузке
+      * `closed` --- Закрыт
+      * `completed` --- Выполнен
     enum:        
-      - "accepted"        
+      - "accepted" 
+      - "paymentExpected"
       - "inprogress"
       - "ready"
       - "closed"
