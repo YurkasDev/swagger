@@ -28,6 +28,9 @@ paths:
         schema:
           $ref: "#/definitions/Order"
       responses:
+        "200": "The order has already been created" 
+          schema:
+            $ref: "#/definitions/status"
         "201":
           description: "CREATED"
           schema:
