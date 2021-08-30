@@ -95,29 +95,30 @@ definitions:
       tradePoint:
         $ref: "#/definitions/tradePoint"  
       formOfPayment:
-        type: "string"
-        description: "Форма расчетов"
-        enum:
-        - "NAL"
-        - "BNAL"
+        $ref: "#/definitions/formOfPayment"
       goods:
         $ref: "#/definitions/goods"
-    xml:
-      name: "Order"
   status:
     title: "Статус заказа"
     type: "object"
     properties:
       status:
-        type: "string"
-        description: "Статус заказа"
-        enum:
-        - "accepted"
-        - "inprogress"
-        - "closed"
-        - "completed"
-    xml:
-      name: "status"
+        $ref: "#/definitions/statuses"
+  statuses:
+    title: "Статусы заказа"
+    type: "string"
+    description: |
+      * `accepted` --- Заказ принят в обработку
+      * `inprogress` --- Заказ находиться в работе
+      * `ready` --- Заказ готов к отгрузке
+      * `closed` --- Заказ закрыт
+      * `completed` --- Заказ выполнен
+    enum:        
+      - "accepted"        
+      - "inprogress"
+      - "ready"
+      - "closed"
+      - "completed"
   goods:
     title: "Таблица товаров"
     type: "object"
@@ -128,8 +129,15 @@ definitions:
       count:
         type: "integer"
         format: "int64"
-    xml:
-      name: "goods"
+  formOfPayment:
+    title: "Форма расчетов"
+    type: "string"
+    description: |
+      * `NAL` --- оплата наличными
+      * `BNAL` --- безналичная форма оплаты
+    enum:        
+      - "NAL"        
+      - "BNAL"
   tradePoint:
     type: "object"
     title: "Кординаты торговой точки"
@@ -141,5 +149,3 @@ definitions:
       lon:
         type: "integer"
         description: "долгота местоположения объекта в формате градусы – доли градусов"
-    xml:
-      name: "tradePoint"
