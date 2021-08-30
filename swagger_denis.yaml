@@ -40,7 +40,7 @@ paths:
             $ref: "#/definitions/successful"
         "400":
           description: "Invalid Order"
-  /order/{orderId}{counterpartyInn}:
+  /order/{orderId}/{counterpartyInn}:
     get:
       tags:
       - "Order"
