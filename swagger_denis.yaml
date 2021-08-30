@@ -133,7 +133,9 @@ definitions:
     properties:
       lat:
         type: "string"
+        description: "Широта"
       lon:
         type: "string"
+        description: "Долгота"
     xml:
       name: "tradePoint"
