@@ -34,7 +34,7 @@ paths:
             $ref: "#/definitions/status"
         "400":
           description: "Invalid Order"
-  /order/{orderId}/{counterpartyInn}:
+  /order/{MessageNumber}/{counterpartyInn}:
     get:
       tags:
       - "Access orders"
@@ -43,7 +43,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "orderId"
+      - name: "MessageNumber"
         in: "path"
         description: "ID заказа по которому нужно получить статус"
         required: true
