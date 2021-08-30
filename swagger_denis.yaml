@@ -89,7 +89,7 @@ definitions:
         format: "int64"
         description: "Номер входящего сообщения. Уникальный номер клиентской заявки."
       tradePoint:
-       
+        $ref: "#/definitions/tradePoint"  
       formOfPayment:
         type: "string"
         description: "Форма расчетов"
