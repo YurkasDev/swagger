@@ -98,6 +98,14 @@ definitions:
         $ref: "#/definitions/formOfPayment"
       goods:
         $ref: "#/definitions/goods"
+    required:
+      - warehouse
+      - organization
+      - counterpartyInn
+      - MessageNumber
+      - tradePoint
+      - formOfPayment
+      - goods 
   status:
     title: "Статус заказа"
     type: "object"
@@ -108,15 +116,13 @@ definitions:
     title: "Статусы заказа"
     type: "string"
     description: |
-      * `accepted` --- Принят но ещё не обработан
-      * `paymentExpected` --- Ожидается оплата
+      * `accepted` --- Заказ принят в обработку
       * `inprogress` --- Заказ находиться в работе
-      * `ready` --- Готов к отгрузке
-      * `closed` --- Закрыт
-      * `completed` --- Выполнен
+      * `ready` --- Заказ готов к отгрузке
+      * `closed` --- Заказ закрыт
+      * `completed` --- Заказ выполнен
     enum:        
-      - "accepted" 
-      - "paymentExpected"
+      - "accepted"        
       - "inprogress"
       - "ready"
       - "closed"
@@ -131,6 +137,9 @@ definitions:
       count:
         type: "integer"
         format: "int64"
+    required:
+      - barcode
+      - count
   formOfPayment:
     title: "Форма расчетов"
     type: "string"
@@ -151,3 +160,6 @@ definitions:
       lon:
         type: "integer"
         description: "долгота местоположения объекта в формате градусы – доли градусов"
+    required:
+      - lat
+      - Lon
