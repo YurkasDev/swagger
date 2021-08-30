@@ -136,10 +136,10 @@ definitions:
     description: "Кординаты торговой точки в формате [53.848776, 27.372260] [Широта, долгота]"
     properties:
       lat:
-        type: "double"
+        type: "integer"
         description: "широта местоположения объекта в формате градусы – доли градусов"
       lon:
-        type: "double"
+        type: "integer"
         description: "долгота местоположения объекта в формате градусы – доли градусов"
     xml:
       name: "tradePoint"
