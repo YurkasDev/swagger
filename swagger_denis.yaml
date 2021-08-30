@@ -28,7 +28,8 @@ paths:
         schema:
           $ref: "#/definitions/Order"
       responses:
-        "200": "The order has already been created" 
+        "200": 
+          description: "The order has already been created" 
           schema:
             $ref: "#/definitions/status"
         "201":
