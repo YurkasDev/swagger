@@ -3,25 +3,19 @@ info:
   description: ""
   version: "0.0.1"
   title: "Yurkas order"
-  contact:
-    email: "d.karpilenya@yurkas.by"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "localHost"
 basePath: "/v1"
 tags:
-- name: "Order"
-  description: "Access orders"
+- name: "Access orders"
+  description: "Доступ к заказам"
 schemes:
-- "https"
 - "http"
 paths:
   /order:
     post:
       tags:
-      - "Order"
-      summary: "Place an order"
+      - "Access orders"
+      summary: "Создать заказ"
       description: ""
       operationId: "placeOrder"
       produces:
@@ -43,8 +37,8 @@ paths:
   /order/{orderId}/{counterpartyInn}:
     get:
       tags:
-      - "Order"
-      summary: "Find purchase order by ID"
+      - "Access orders"
+      summary: "Получить статус заказа"
       operationId: "getOrderById"
       produces:
       - "application/json"
@@ -71,6 +65,7 @@ paths:
           description: "Order not found"
 definitions:
   Order:
+    title: "Заказ"
     type: "object"
     properties:
       warehouse:
@@ -120,6 +115,7 @@ definitions:
     xml:
       name: "successful"
   goods:
+    title: "Таблица товаров"
     type: "object"
     properties:
       barcode:
@@ -130,6 +126,3 @@ definitions:
         format: "int64"
     xml:
       name: "goods"
-externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
