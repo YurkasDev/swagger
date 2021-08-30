@@ -90,7 +90,7 @@ definitions:
         description: "Номер входящего сообщения. Уникальный номер клиентской заявки."
       tradePoint:
         type: "string"
-        description: "Кординаты торговой точки в формате"
+        description: "Кординаты торговой точки в формате [53.848776, 27.372260] [Широта, долгота]"
       formOfPayment:
         type: "string"
         description: "Форма расчетов"
