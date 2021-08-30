@@ -89,8 +89,7 @@ definitions:
         format: "int64"
         description: "Номер входящего сообщения. Уникальный номер клиентской заявки."
       tradePoint:
-        type: "string"
-        description: "Кординаты торговой точки в формате [53.848776, 27.372260] [Широта, долгота]"
+       
       formOfPayment:
         type: "string"
         description: "Форма расчетов"
@@ -127,3 +126,14 @@ definitions:
         format: "int64"
     xml:
       name: "goods"
+  tradePoint:
+    type: "object"
+    title: "Кординаты торговой точки"
+    description: "Кординаты торговой точки в формате [53.848776, 27.372260] [Широта, долгота]"
+    properties:
+      lat:
+        type: "string"
+      lon:
+        type: "string"
+    xml:
+      name: "tradePoint"
