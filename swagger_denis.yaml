@@ -23,17 +23,17 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "order placed"
+        description: "Размещение заказа"
         required: true
         schema:
           $ref: "#/definitions/Order"
       responses:
-        "200":
-          description: "successful operation"
+        "201":
+          description: "CREATED"
           schema:
             $ref: "#/definitions/status"
         "400":
-          description: "Invalid Order"
+          description: "Bad Request"
   /order/{MessageNumber}/{counterpartyInn}:
     get:
       tags:
@@ -45,7 +45,7 @@ paths:
       parameters:
       - name: "MessageNumber"
         in: "path"
-        description: "ID заказа по которому нужно получить статус"
+        description: "Номер заказа по которому нужно получить статус"
         required: true
         type: "integer"
         format: "int64"
@@ -84,10 +84,10 @@ definitions:
       counterpartyInn:
         type: "string"
         description: "ИНН"
-      orderId:
+      MessageNumber:
         type: "integer"
         format: "int64"
-        description: "Номер входящего сообщения"
+        description: "Номер входящего сообщения. Уникальный номер клиентской заявки."
       tradePoint:
         type: "string"
         description: "Кординаты торговой точки в формате"
