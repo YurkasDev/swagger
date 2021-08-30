@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   description: ""
   version: "0.0.1"
-  title: "order"
+  title: "Yurkas order"
 host: "localHost"
 basePath: "/v1"
 tags:
@@ -38,7 +38,7 @@ paths:
             $ref: "#/definitions/status"
         "400":
           description: "Bad Request"
-  /order/{MessageNumber}/{counterpartyInn}:
+  /order/{messageNumber}/{counterpartyInn}:
     get:
       tags:
       - "Access orders"
@@ -47,7 +47,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "MessageNumber"
+      - name: "messageNumber"
         in: "path"
         description: "Номер заказа по которому нужно получить статус"
         required: true
@@ -88,7 +88,7 @@ definitions:
       counterpartyInn:
         type: "string"
         description: "ИНН"
-      MessageNumber:
+      messageNumber:
         type: "integer"
         format: "int64"
         description: "Номер входящего сообщения. Уникальный номер клиентской заявки."
@@ -102,7 +102,7 @@ definitions:
       - warehouse
       - organization
       - counterpartyInn
-      - MessageNumber
+      - messageNumber
       - tradePoint
       - formOfPayment
       - goods 
