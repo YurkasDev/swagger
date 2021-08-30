@@ -31,7 +31,7 @@ paths:
         "200":
           description: "successful operation"
           schema:
-            $ref: "#/definitions/successful"
+            $ref: "#/definitions/status"
         "400":
           description: "Invalid Order"
   /order/{orderId}/{counterpartyInn}:
@@ -58,7 +58,7 @@ paths:
         "200":
           description: "successful operation"
           schema:
-            $ref: "#/definitions/successful"
+            $ref: "#/definitions/status"
         "400":
           description: "Bad Request"
         "404":
@@ -101,7 +101,8 @@ definitions:
         $ref: "#/definitions/goods"
     xml:
       name: "Order"
-  successful:
+  status:
+    title: "Статус заказа"
     type: "object"
     properties:
       status:
@@ -113,7 +114,7 @@ definitions:
         - "closed"
         - "completed"
     xml:
-      name: "successful"
+      name: "status"
   goods:
     title: "Таблица товаров"
     type: "object"
