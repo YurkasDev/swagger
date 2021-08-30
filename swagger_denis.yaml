@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   description: ""
   version: "0.0.1"
-  title: "Yurkas order"
+  title: "order"
 host: "localHost"
 basePath: "/v1"
 tags:
