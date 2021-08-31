@@ -4,6 +4,7 @@ info:
   version: "1.0.1"
   title: "Yurkas order"
 host: "1c.yurkas.ru"
+basePath: "/v1"
 tags:
 - name: "Access orders"
   description: "Доступ к заказам"
