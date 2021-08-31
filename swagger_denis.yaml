@@ -98,7 +98,9 @@ definitions:
       formOfPayment:
         $ref: "#/definitions/formOfPayment"
       goods:
-        $ref: "#/definitions/goods"
+        type: array
+        items: 
+          $ref: "#/definitions/goods"
     required:
       - warehouse
       - organization
