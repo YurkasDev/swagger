@@ -38,7 +38,7 @@ paths:
             $ref: "#/definitions/status"
         "400":
           description: "Bad Request"
-  /order?messageNumber}&{counterpartyInn}:
+  /order?{messageNumber}&{counterpartyInn}:
     get:
       tags:
       - "Access orders"
