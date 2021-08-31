@@ -38,7 +38,6 @@ paths:
             $ref: "#/definitions/status"
         "400":
           description: "Bad Request"
-  /order?{messageNumber}&{counterpartyInn}:
     get:
       tags:
       - "Access orders"
@@ -48,13 +47,13 @@ paths:
       - "application/json"
       parameters:
       - name: "messageNumber"
-        in: "path"
+        in: "query"
         description: "Номер заказа по которому нужно получить статус"
         required: true
         type: "integer"
         format: "int64"
       - name: "counterpartyInn"
-        in: "path"
+        in: "query"
         description: "ИНН контрагента"
         required: true
         type: "string"
