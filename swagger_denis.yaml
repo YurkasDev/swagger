@@ -3,7 +3,7 @@ info:
   description: ""
   version: "0.0.1"
   title: "Yurkas order"
-host: "api.yurkas.ru"
+host: "1c.yurkas.ru"
 basePath: "/v1"
 tags:
 - name: "Access orders"
