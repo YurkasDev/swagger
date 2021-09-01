@@ -73,7 +73,7 @@ paths:
 securityDefinitions:
   api_key:
     type: apiKey
-    name: api_key
+    name: apikey
     in: header
 definitions:
   Order:
