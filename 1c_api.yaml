@@ -9,7 +9,7 @@ tags:
 - name: "Access orders"
   description: "Доступ к заказам"
 schemes:
-- "http"
+- "https"
 paths:
   /order:
     post:
