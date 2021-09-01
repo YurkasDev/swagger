@@ -39,7 +39,7 @@ paths:
         "400":
           description: "Bad Request"
       security:
-        - yurkas_auth: []
+        - api_key: []
     get:
       tags:
       - "Access orders"
@@ -69,10 +69,12 @@ paths:
         "404":
           description: "Order not found"
       security:
-        - yurkas_auth: []
+        - api_key: []
 securityDefinitions:
-   yurkas_auth:
-    type: basic
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
 definitions:
   Order:
     title: "Заказ"
