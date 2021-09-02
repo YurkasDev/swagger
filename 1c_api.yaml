@@ -77,8 +77,8 @@ paths:
 securityDefinitions:
   api_key:
     type: apiKey
-    name: X-API-KEY
-    in: header
+    name: apikey
+    in: query
 definitions:
   Order:
     title: "Заказ"
