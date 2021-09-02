@@ -38,6 +38,8 @@ paths:
             $ref: "#/definitions/status"
         "400":
           description: "Bad Request"
+        "401"
+          definitions: "Unauthorized"
       security:
         - api_key: []
     get:
