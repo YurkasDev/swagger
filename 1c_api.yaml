@@ -41,7 +41,7 @@ paths:
         "401":
           definitions: "Unauthorized"
       security:
-        - api_key: []
+        - APIKeyHeader: []
     get:
       tags:
       - "Access orders"
@@ -73,9 +73,9 @@ paths:
         "404":
           description: "Order not found"
       security:
-        - api_key: []
+        - APIKeyHeader: []
 securityDefinitions:
-  api_key:
+  APIKeyHeader:
     type: apiKey
     in: header
     name: X-API-Key
