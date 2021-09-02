@@ -78,7 +78,7 @@ securityDefinitions:
   APIKeyHeader:
     type: apiKey
     in: header
-    name: X-API-Key
+    name: apikey
 definitions:
   Order:
     title: "Заказ"
