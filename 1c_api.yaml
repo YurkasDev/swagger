@@ -77,7 +77,7 @@ paths:
 securityDefinitions:
   api_key:
     type: apiKey
-    name: apikey
+    name: X-API-KEY
     in: header
 definitions:
   Order:
