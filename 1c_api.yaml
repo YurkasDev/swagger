@@ -90,7 +90,7 @@ definitions:
         enum:
         - "Moscow"
         - "SPB"
-      organizationINN:
+      organizationInn:
         type: "string"
         description: "ИНН оргранизации(Юркас)"
         
