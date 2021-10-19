@@ -90,14 +90,10 @@ definitions:
         enum:
         - "Moscow"
         - "SPB"
-      organization:
+      organizationINN:
         type: "string"
-        description: "Название оргранизации"
-        enum:
-        - "Yurkas"
-        - "Germes"
-        - "YurkasDoors"
-        - "YurkasSpb"  
+        description: "ИНН оргранизации(Юркас)"
+        
       counterpartyInn:
         type: "string"
         description: "ИНН"
@@ -115,7 +111,7 @@ definitions:
           $ref: "#/definitions/goods"
     required:
       - warehouse
-      - organization
+      - organizationInn
       - counterpartyInn
       - messageNumber
       - tradePoint
