@@ -1,77 +1,110 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: ""
-  version: "1.0.5"
-  title: "Yurkas order"
-host: "1c.yurkas.ru"
-basePath: "/v1"
+  description: ' Данный сервис предназначен для генерации и работы с заказами компании Юркас. Ключи доступа(API key) и УИД торговых точек необходимо получить у тех. специалиста.'
+  version: 1.0.5
+  title: Yurkas order
+host: 1c-test.yurkas.ru
+basePath: /v1
 tags:
-- name: "Access orders"
-  description: "Доступ к заказам"
+  - name: Access orders
+    description: Доступ к заказам
 schemes:
-- "https"
+  - https
 paths:
   /order:
     post:
       tags:
-      - "Access orders"
-      summary: "Создать заказ"
-      description: ""
-      operationId: "placeOrder"
+        - Access orders
+      summary: Создать заказ
+      description: ''
+      operationId: placeOrder
       produces:
-      - "application/json"
+        - application/json
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Размещение заказа"
-        required: true
-        schema:
-          $ref: "#/definitions/Order"
+        - in: body
+          name: body
+          description: Размещение заказа
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
       responses:
-        "200": 
-          description: "The order has already been created" 
+        '200':
+          description: The order has already been created
           schema:
-            $ref: "#/definitions/status"
-        "201":
-          description: "CREATED"
+            $ref: '#/definitions/status'
+        '201':
+          description: CREATED
           schema:
-            $ref: "#/definitions/status"
-        "400":
-          description: "Bad Request"
-        "401":
-          definitions: "Unauthorized"
+            $ref: '#/definitions/status'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
       security:
         - APIKeyHeader: []
     get:
       tags:
-      - "Access orders"
-      summary: "Получить статус заказа"
-      operationId: "getOrderById"
+        - Access orders
+      summary: Получить статус заказа
+      operationId: getOrderById
       produces:
-      - "application/json"
+        - application/json
       parameters:
-      - name: "messageNumber"
-        in: "query"
-        description: "Номер заказа по которому нужно получить статус"
-        required: true
-        type: "integer"
-        format: "int64"
-      - name: "counterpartyInn"
-        in: "query"
-        description: "ИНН контрагента"
-        required: true
-        type: "string"
+        - name: messageNumber
+          in: query
+          description: Номер заказа по которому нужно получить статус
+          required: true
+          type: integer
+          format: int64
+        - name: counterpartyInn
+          in: query
+          description: ИНН контрагента
+          required: true
+          type: string
       responses:
-        "200":
-          description: "successful operation"
+        '200':
+          description: successful operation
           schema:
-            $ref: "#/definitions/status"
-        "400":
-          description: "Bad Request"
-        "401":
-          definitions: "Unauthorized"
-        "404":
-          description: "Order not found"
+            $ref: '#/definitions/status'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Order not found
+      security:
+        - APIKeyHeader: []
+  /price:
+    get:
+      tags: 
+        - Access orders
+      summary: Получить цену заказа
+      operationId: getPrice
+      produces:
+        - application/json
+      parameters:
+        - name: messageNumber
+          in: query
+          description: Номер заказа по которому нужно получить статус
+          required: true
+          type: integer
+          format: int64
+        - name: counterpartyInn
+          in: query
+          description: ИНН контрагента
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+             $ref: '#/definitions/responsePrice'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Order not found
       security:
         - APIKeyHeader: []
 securityDefinitions:
@@ -81,96 +114,107 @@ securityDefinitions:
     name: apikey
 definitions:
   Order:
-    title: "Заказ"
-    type: "object"
+    title: Заказ
+    type: object
     properties:
       warehouse:
-        type: "string"
-        description: "Склад оргранизации"
+        type: string
+        description: Склад оргранизации
         enum:
-        - "Moscow"
-        - "SPB"
+          - Moscow
+          - SPB
       organizationInn:
-        type: "string"
-        description: "ИНН оргранизации(Юркас)"
-        
+        type: string
+        description: ИНН оргранизации(Юркас)
       counterpartyInn:
-        type: "string"
-        description: "ИНН"
+        type: string
+        description: ИНН
       messageNumber:
-        type: "integer"
-        format: "int64"
-        description: "Номер входящего сообщения. Уникальный номер клиентской заявки."
-      tradePoint:
-        $ref: "#/definitions/tradePoint"  
+        type: integer
+        format: int64
+        description: Номер входящего сообщения. Уникальный номер клиентской заявки.
+      tradePointUID:
+        $ref: '#/definitions/tradePointUID'
       formOfPayment:
-        $ref: "#/definitions/formOfPayment"
+        $ref: '#/definitions/formOfPayment'
       goods:
         type: array
-        items: 
-          $ref: "#/definitions/goods"
+        items:
+          $ref: '#/definitions/goods'
     required:
       - warehouse
       - organizationInn
       - counterpartyInn
       - messageNumber
-      - tradePoint
+      - tradePointUID
       - formOfPayment
-      - goods 
+      - goods
   status:
-    title: "Статус заказа"
-    type: "object"
+    title: Статус заказа
+    type: object
     properties:
-      status:
-        $ref: "#/definitions/statuses"
+      NumberOrder:
+        type: integer
+        format: int64
+        description: Номер заявки в базе Юркас.
+      Status:
+        $ref: '#/definitions/statuses'
   statuses:
-    title: "Статусы заказа"
-    type: "string"
+    title: Статусы заказа
+    type: string
     description: |
       * `accepted` --- Заказ принят в обработку
       * `inprogress` --- Заказ находиться в работе
       * `ready` --- Заказ готов к отгрузке
       * `closed` --- Заказ закрыт
       * `completed` --- Заказ выполнен
-    enum:        
-      - "accepted"        
-      - "inprogress"
-      - "ready"
-      - "closed"
-      - "completed"
+    enum:
+      - accepted
+      - inprogress
+      - ready
+      - closed
+      - completed
   goods:
-    title: "Таблица товаров"
-    type: "object"
+    title: Таблица товаров
+    type: object
     properties:
       barcode:
-        type: "string"
-        description: "Штрихкод"
+        type: string
+        description: Штрихкод
+      name:
+        type: string
+        description: >-
+          Наименование в формате :((Код)) + Наименование
+          Например: ((00011111)) Добор под U 100*2440 Манхэттен 
+          Код и наименование в вашей базе.
       count:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
     required:
-      - barcode
       - count
   formOfPayment:
-    title: "Форма расчетов"
-    type: "string"
+    title: Форма расчетов
+    type: string
     description: |
       * `NAL` --- оплата наличными
       * `BNAL` --- безналичная форма оплаты
-    enum:        
-      - "NAL"        
-      - "BNAL"
-  tradePoint:
-    type: "object"
-    title: "Кординаты торговой точки"
-    description: "Кординаты торговой точки в формате [53.848776, 27.372260] [Широта, долгота]"
+    enum:
+      - NAL
+      - BNAL
+  responsePrice:
+    title: Ответ на getPrice
+    type: object
     properties:
-      lat:
-        type: "integer"
-        description: "широта местоположения объекта в формате градусы – доли градусов"
-      lon:
-        type: "integer"
-        description: "долгота местоположения объекта в формате градусы – доли градусов"
-    required:
-      - lat
-      - Lon
+      NumberOrder:
+        type: integer
+        format: int64
+        description: Номер заявки в базе Юркас.
+      Status:
+        $ref: '#/definitions/statuses'
+      goods:
+        $ref: '#/definitions/goods' 
+  tradePointUID:
+    type: string
+    title: UID торговой точки
+    description: >-
+      UID торговой точки, необходимо получить у тех. специалиста.
