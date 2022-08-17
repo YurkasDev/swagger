@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: ' Данный сервис предназначен для генерации и работы с заказами компании Юркас. Ключи доступа(API key) и УИД торговых точек необходимо получить у тех. специалиста.'
-  version: 1.0.5
+  version: 1.0.6
   title: Yurkas order
 host: 1c-test.yurkas.ru
 basePath: /v1
@@ -164,6 +164,7 @@ definitions:
     type: string
     description: |
       * `accepted` --- Заказ принят в обработку
+      * `paymentExpected` --- Заказ ожидает оплату (Заказные позиции)
       * `inprogress` --- Заказ находиться в работе
       * `ready` --- Заказ готов к отгрузке
       * `closed` --- Заказ закрыт
